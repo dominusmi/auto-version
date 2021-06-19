@@ -11,6 +11,8 @@ use syn::{ItemFn};
 ///
 /// Example:
 /// ```rust
+/// use auto_version::auto_version;
+///
 /// #[auto_version]
 /// fn main() {
 ///     // executed code
@@ -37,18 +39,17 @@ pub fn auto_version(_: TokenStream, input: TokenStream) -> TokenStream {
             // use this inner block so that the local imports don't affect the user's code
             use std::ffi::{OsString, OsStr};
             use std::process::exit;
-            let args: Vec<OsString> = std::env::args_os().collect();
-            let v = OsStr::new("-v");
-            let version = OsStr::new("--version");
-            for arg in args.iter() {
-                if arg == v || arg == version {
+
+            if std::env::args_os()
+                .find(|arg| arg == "-v" || arg == "--version" || arg == "-V")
+                .is_some()
+                {
                     match option_env!("CARGO_PKG_VERSION") {
                         Some(version) => println!("{}", version),
                         None => println!("`auto_version` macro only works for projects compiled with cargo")
                     }
                     exit(0);
                 }
-            }
         }
     };
 
