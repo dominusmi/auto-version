@@ -6,7 +6,8 @@ edition = "2018"
 license = "MIT OR Apache-2.0"
 description = "Automatically add -v and --version output to your rust executables"
 repository = "https://github.com/dominusmi/auto-version"
-
+keywords = ["version", "macro", "devops", "automatic", "command-line"]
+categories = ["command-line-utilities", "config"]
 [lib]
 proc-macro = true
 
