@@ -70,6 +70,15 @@ mod tests {
         let stdout = String::from_utf8(output.stdout).unwrap();
         assert!(stdout.starts_with("0.0.1"), "Expected stdout to be 0.0.1, got {}", stdout);
 
+        println!("Testing -V");
+        let output = Command::new("cargo")
+            .current_dir(&test_package_dir)
+            .arg("run").arg("--").arg("-V").output().unwrap();
+
+        let stdout = String::from_utf8(output.stdout).unwrap();
+        assert!(stdout.starts_with("0.0.1"), "Expected stdout to be 0.0.1, got {}", stdout);
+
+
         println!("Testing no args");
         let output = Command::new("cargo")
             .current_dir(&test_package_dir)

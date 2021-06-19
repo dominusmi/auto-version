@@ -1,4 +1,4 @@
-# Automatically add `-v` and `--version` to your binaries
+# Automatically add `-v`, `-V`, and `--version` to your binaries
 
 [![](https://img.shields.io/crates/v/auto-version.svg)](https://crates.io/crates/auto-version)
 [![](https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square)](https://docs.rs/auto-version/latest/auto_version/)
